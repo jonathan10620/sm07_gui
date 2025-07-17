@@ -1,6 +1,4 @@
-from distutils.command.clean import clean
 
-from numpy import number
 from helpers import date_check, parse_date, calculate_recieved_date
 import PySimpleGUI as sg
 import pyperclip
@@ -41,11 +39,14 @@ misc_frame = [
 ]
 
 layout = [
-    [sg.Frame('Client Info', client_frame, font='Any 12'),sg.Frame('Request Dates', request_date_frame, font='Any 12'),sg.Frame('Late Submission Blurbs', Late_submission_frame,font='Any 12'),sg.Frame('Miscellaneous', misc_frame, font='Any 12',)],
-    
+    [
+    sg.Frame('Client Info', client_frame, font='Any 12'),sg.Frame('Request Dates', request_date_frame, font='Any 12'),
+    sg.Frame('Late Submission Blurbs', Late_submission_frame,font='Any 12'),
+    sg.Frame('Miscellaneous', misc_frame, font='Any 12',)
+    ]
 ]
 
-window = sg.Window('Clinician Comment', layout)      
+window = sg.Window('Clinician Comment', layout, keep_on_top=False)      
 
 while True:                             # The Event Loop
     event, values = window.read()
@@ -93,30 +94,20 @@ while True:                             # The Event Loop
             
 
             if number_of_days > 180:
-
                 date_start = datetime.strptime(dos.split('-')[0],'%m/%d/%Y')
                 print(date_start)
-
                 date_end = date_start + timedelta(days=179)
                 print(date_end)
-
                 date_end_string = date_end.strftime('%m/%d/%Y')
                 date_start_string = date_start.strftime('%m/%d/%Y')
                 approved_dos = f'{date_start_string}-{date_end_string}'
-
-
-
-
-
-
-
-                blurb = f'Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. The dates requested have been modified because the request exceeds the standard authorization period for this service.  DOS {approved_dos} are approved based on Texas Medicaid Medical Policy Manual— August 2022 Telemonitoring Services and SOP 111.J. De La Paz RN.'
+                blurb = f'Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. The dates requested have been modified because the request exceeds the standard authorization period for this service.  DOS {approved_dos} are approved based on Texas Medicaid Medical Policy Manual— October 2022 Telemonitoring Services and SOP 111.J. De La Paz RN.'
                 pyperclip.copy(blurb)
                 print(blurb)
             elif number_of_days == -1:
                 break
             else:
-                blurb = f"Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. DOS {dos} are approved based on Texas Medicaid Medical Policy Manual— August 2022 Telemonitoring Services and SOP 111.J. De La Paz RN."
+                blurb = f"Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. DOS {dos} are approved based on Texas Medicaid Medical Policy Manual— October 2022 Telemonitoring Services and SOP 111.J. De La Paz RN."
                 pyperclip.copy(blurb)
                 print(blurb)
         elif mod:
@@ -124,13 +115,13 @@ while True:                             # The Event Loop
             d1, d2 = dos.split('-')
             number_of_days = date_check(d1, d2)
             if number_of_days > 180:
-                mod_blurb = f"Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. DOS {denied_dos} are denied due to submission guidelines. The dates requested have been modified because the request exceeds the standard authorization period for this service. DOS {approved_dos} are approved based on Texas Medicaid Medical Policy Manual— August 2022 Telemonitoring Services and SOP 111.J. De La Paz RN."
+                mod_blurb = f"Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. DOS {denied_dos} are denied due to submission guidelines. The dates requested have been modified because the request exceeds the standard authorization period for this service. DOS {approved_dos} are approved based on Texas Medicaid Medical Policy Manual— October 2022 Telemonitoring Services and SOP 111.J. De La Paz RN."
                 pyperclip.copy(mod_blurb)
             else:
-                mod_blurb = f"Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. DOS {denied_dos} are denied due to submission guidelines. DOS {approved_dos} are approved based on Texas Medicaid Medical Policy Manual— August 2022 Telemonitoring Services and SOP 111.J. De La Paz RN."
+                mod_blurb = f"Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. DOS {denied_dos} are denied due to submission guidelines. DOS {approved_dos} are approved based on Texas Medicaid Medical Policy Manual— October 2022 Telemonitoring Services and SOP 111.J. De La Paz RN."
                 pyperclip.copy(mod_blurb)
         elif pend:
-            pend_blurb = f'Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. Based on Texas Medicaid Medical Policy Manual— August 2022 Telemonitoring Services and SOP 111, TMHP is pending your authorization request for the following items: ______ J. De La Paz RN '
+            pend_blurb = f'Portal ID:{portal} Fax #: {fax}. Client is eligible. Duplicates/history checked. None found. Provider is eligible. Provider type: 44. No current or future PDC. Submitter certification page submitted & completed. Requested {procedure} DOS:{dos}. Client age: {age} . The client has a qualifying condition of: {dx} with at least 2 risk factors listed in policy. Based on Texas Medicaid Medical Policy Manual— October 2022 Telemonitoring Services and SOP 111, TMHP is pending your authorization request for the following items: ______ J. De La Paz RN '
             pyperclip.copy(pend_blurb)
 
         

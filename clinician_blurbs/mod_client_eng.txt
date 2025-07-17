@@ -1,9 +1,9 @@
-The August 2022, Texas Medicaid Provider Procedures Manual, Volume 1, section 1.7.11 states:
+The October 2022, Texas Medicaid Provider Procedures Manual, Volume 1, section 1.7.11 states:
 A provider cannot require a down payment before providing Medicaid-allowable services to eligible clients, bill, nor take recourse against eligible clients for denied or reduced claims for services that are within the amount, duration, and scope of benefits of Texas Medicaid if the action is the result of any of the following provider-attributable errors:
 • Failure to obtain prior authorization for services that require prior authorization under Texas Medicaid
-The August 2022, Texas Medicaid Provider Procedures Manual, Volume 1, section 5.4 states:
+The October 2022, Texas Medicaid Provider Procedures Manual, Volume 1, section 5.4 states:
 Texas Medicaid and Healthcare Partnership (TMHP) uses the date that the complete and accurate request form is received to determine the start date for services. Previous submission dates of incomplete forms returned are not considered when determining the start date of service.
-The August 2022, Texas Medicaid Provider Procedures Manual, Volume 2, Telecommunication Services Handbook, section 3.6.1 states:
+The October 2022, Texas Medicaid Provider Procedures Manual, Volume 2, Telecommunication Services Handbook, section 3.6.1 states:
 Home telemonitoring services may be approved for up to 180 days per prior authorization request. If additional home telemonitoring services are needed, the home health agency or hospital must request prior authorization before the current prior authorization period ends.
 Requests for additional home telemonitoring services that are received after the current prior authorization ends will be denied for dates of service that occurred before the date the submitted request was received.
 The initial request for prior authorization must be received no more than three business days from the date that the home telemonitoring services are initiated. Requests received after the three business day period will be denied for dates of service that occurred before the date that the request was received.
